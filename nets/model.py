@@ -30,28 +30,28 @@ def siamese_loss(out1,out2,y):
 
     diff = out1 - out2 #tf.sqrt(tf.reduce_sum(tf.square(out1 - out2), axis=1))
 
-    sim_w = tf.Variable(tf.truncated_normal(shape=[diff.get_shape()[-1].value, 1],
+    sim_w = tf.Variable(tf.truncated_normal(shape=[diff.get_shape()[-1].value, 2],
                                             stddev=0.05, mean=0), name='sim_w')
-    sim_b = tf.Variable(tf.zeros(1), name='sim_b')
+    sim_b = tf.Variable(tf.zeros(2), name='sim_b')
     #print(sim_w, sim_b, diff)
     pred = tf.add(tf.matmul(diff, sim_w), sim_b)
 
-    #logist = tf.nn.softmax(pred)
+    logist = tf.nn.softmax(pred)
 
-    #print(logist)
-    #print(y)
-    #correct_prediction = tf.equal(tf.cast(tf.argmax(logist, 0), tf.float32), y)
-    #accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+    print(logist)
+    print(y,tf.argmax(logist, 1))
+    correct_prediction = tf.equal(tf.cast(tf.argmax(logist, 1), tf.float32), y)
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-    #loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.cast(y, tf.int32), logits=pred)
+    loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.cast(y, tf.int32), logits=pred)
     
-
-    loss = tf.reduce_mean(tf.square(pred - y))
+    loss = tf.reduce_mean(loss)
+    #loss = tf.reduce_mean(tf.square(pred - y))
  
     #loss = tf.cond(loss > 5.0, lambda: tf.sqrt(loss), lambda: loss)
 
-    return loss, pred, loss, loss, loss
-    #return loss, logist, accuracy, sim_w, sim_b
+    #return loss, pred, loss, loss, loss
+    return loss, logist, accuracy, sim_w, sim_b
 
 def siamese(inputs, keep_prob, fea_len):
 

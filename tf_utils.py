@@ -217,26 +217,28 @@ class data_utils:
 
             path = self.list_a[self.idx_pos]
             img_data = cv2.imread(path)
+            if img_data is not None:
+                img_1 = random_crop_image(img_data)
+                angle = np.random.randint(-45, 45)
+                img_2 = rotate_image(img_data, angle, img_data.shape[1], img_data.shape[0])
+                img_3 = cv2.resize(img_data, (224, 224))
 
-            img_1 = random_crop_image(img_data)
-            angle = np.random.randint(-45, 45)
-            img_2 = rotate_image(img_data, angle, img_data.shape[1], img_data.shape[0])
-            img_3 = cv2.resize(img_data, (224, 224))
+                img_1_batch[idx[count]] = cv2.resize(img_1, (224, 224))
+                if random.randint(0, 10) >= 5:
+                    img_2_batch[idx[count], ...] = cv2.resize(img_2, (224, 224))
+                else:
+                    img_2_batch[idx[count], ...] = cv2.resize(img_3, (224, 224))
 
-            img_1_batch[idx[count]] = cv2.resize(img_1, (224, 224))
-            if random.randint(0, 10) >= 5:
-                img_2_batch[idx[count], ...] = cv2.resize(img_2, (224, 224))
-            else:
-                img_2_batch[idx[count], ...] = cv2.resize(img_3, (224, 224))
+                label_batch[idx[count]] = 0
+                path_a[idx[count]] = path
+                path_b[idx[count]] = path
+                count += 1
 
-            label_batch[idx[count]] = 0
-            path_a[idx[count]] = path
-            path_b[idx[count]] = path
             self.idx_pos += 1
             if self.idx_pos >= len(self.list_a):
                 random.shuffle(self.list_a)
                 self.idx_pos = 0
-            count += 1
+
 
         while (count < batch_size):
             self.idx_neg += 1
@@ -249,35 +251,37 @@ class data_utils:
                 img_data_1 = cv2.imread(path_1)
                 img_data_2 = cv2.imread(path_2)
 
-                if random.randint(0,10) >= 5:
-                    if random.randint(0,10)>=5:
-                        img_data_1 = random_crop_image(img_data_1)
-                    else:
-                        angle = np.random.randint(0, 45)
-                        img_data_1 = rotate_image(img_data_1, angle, img_data_1.shape[1], img_data_1.shape[0])
+                if img_data_1 is not None and img_data_2 is not None:
 
-                img_data_1 = cv2.resize(img_data_1, (224, 224))
+                    if random.randint(0,10) >= 5:
+                        if random.randint(0,10)>=5:
+                            img_data_1 = random_crop_image(img_data_1)
+                        else:
+                            angle = np.random.randint(0, 45)
+                            img_data_1 = rotate_image(img_data_1, angle, img_data_1.shape[1], img_data_1.shape[0])
 
-                if random.randint(0,10) >= 5:
-                    if random.randint(0,10)>=5:
-                        img_data_2 = random_crop_image(img_data_2)
-                    else:
-                        angle = np.random.randint(0, 45)
-                        img_data_2 = rotate_image(img_data_2, angle, img_data_2.shape[1], img_data_2.shape[0])
+                    img_data_1 = cv2.resize(img_data_1, (224, 224))
 
-                img_data_2 = cv2.resize(img_data_2, (224, 224))
+                    if random.randint(0,10) >= 5:
+                        if random.randint(0,10)>=5:
+                            img_data_2 = random_crop_image(img_data_2)
+                        else:
+                            angle = np.random.randint(0, 45)
+                            img_data_2 = rotate_image(img_data_2, angle, img_data_2.shape[1], img_data_2.shape[0])
+
+                    img_data_2 = cv2.resize(img_data_2, (224, 224))
 
 
-                img_1_batch[idx[count], ...] = cv2.resize(img_data_1, (224, 224))
+                    img_1_batch[idx[count], ...] = cv2.resize(img_data_1, (224, 224))
 
-                img_2_batch[idx[count], ...] = cv2.resize(img_data_2, (224, 224))
+                    img_2_batch[idx[count], ...] = cv2.resize(img_data_2, (224, 224))
 
-                label_batch[idx[count], ...] = 1
+                    label_batch[idx[count], ...] = 1
 
-                path_a[idx[count]] = path_1
-                path_b[idx[count]] = path_2
+                    path_a[idx[count]] = path_1
+                    path_b[idx[count]] = path_2
 
-                count += 1
+                    count += 1
 
             self.idx_neg += 1
             if self.idx_neg >= len(self.list_a):

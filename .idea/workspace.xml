@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="61fdfc80-0194-41f2-9fa7-2108c158e674" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1537850627.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1537857897.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538151652.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538152035.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538152741.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538154466.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538154589.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538154703.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538155033.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538155207.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538155310.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538155463.aiserver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538568481.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538568619.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538568714.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538568764.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538568816.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538569097.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538569268.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538569350.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538569415.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/siamese/events.out.tfevents.1538572615.kuan-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/tf_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainer.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="trainer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/trainer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="185" column="9" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_manager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="summary.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/tensorflow/python/summary/summary.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="297" selection-start-line="297" selection-end-line="297" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tf_utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tf_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-933">
+              <caret line="235" selection-start-line="235" selection-end-line="235" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nets/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-420">
+              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/data_manager.py" />
+        <option value="$PROJECT_DIR$/tf_utils.py" />
+        <option value="$PROJECT_DIR$/nets/model.py" />
+        <option value="$PROJECT_DIR$/trainer.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2460" />
+    <option name="y" value="148" />
+    <option name="width" value="2495" />
+    <option name="height" value="1444" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SiameseNet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiameseNet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SiameseNet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiameseNet" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SiameseNet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiameseNet" type="462c0819:PsiDirectoryNode" />
+              <item name="nets" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="trainer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SiameseNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trainer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.trainer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61fdfc80-0194-41f2-9fa7-2108c158e674" name="Default" comment="" />
+      <created>1538577425116</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1538577425116</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1985" y="-4" width="2495" height="1444" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25101542" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3522907" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39968404" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/tensorflow/python/summary/summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="297" selection-start-line="297" selection-end-line="297" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tf_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-933">
+          <caret line="235" selection-start-line="235" selection-end-line="235" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nets/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="185" column="9" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

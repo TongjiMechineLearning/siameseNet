@@ -13,7 +13,7 @@ is_show = False
 
 
 tf_data_path = "/home/aiserver/dataset/imretrieval/tf_data/"
-img_data_path = ["/home/kuan/data/image_retrieval/img_data"]
+img_data_path = ["/home/dlserver/wxk_code/BaiduImageSpider/布料花纹"]
 
 img_new_path = "/home/kuan/data/image_retrieval/img_new_data"
 

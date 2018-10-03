@@ -124,10 +124,10 @@ def train():
 
         print("Setting up Saver...")
         saver = tf.train.Saver(tf.global_variables(), max_to_keep=5)
-
-        summary_writer = tf.summary.FileWriter("graph/siamese/", sess.graph)
-
-        summary_op = tf.summary.merge(list(summaries))
+        #
+        # summary_writer = tf.summary.FileWriter("graph/siamese/", sess.graph)
+        #
+        # summary_op = tf.summary.merge(list(summaries))
 
         coord = tf.train.Coordinator()
         threads = tf.train.start_queue_runners(sess=sess, coord=coord)
@@ -164,8 +164,8 @@ def train():
 
             feed_dict_train = {x1: img_1_train, x2: img_2_train, label: label_train, keep_prob: keep_prob_val}
 
-            _, train_loss, summary_str, pred_val,acc_val, global_step_val, learning_rate_val = \
-                sess.run([train_op, loss, summary_op, pred, accuracy,
+            _, train_loss, pred_val,acc_val, global_step_val, learning_rate_val = \
+                sess.run([train_op, loss, pred, accuracy,
                           global_step, learning_rate], feed_dict=feed_dict_train)
 
             #summary_writer.add_summary(summary_str, global_step_val)
@@ -183,7 +183,7 @@ def train():
             if itera % 1000 == 0:
                 saver.save(sess, "ckpt/ckpt.ckpt" + str(global_step_val), global_step=1)
 
-        summary_writer.close()
+        #summary_writer.close()
 
 def inference():
 
