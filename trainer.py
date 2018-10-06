@@ -36,7 +36,7 @@ tf.app.flags.DEFINE_float('learning_rate_decay_factor', 0.99, 'learning rate dec
 tf.app.flags.DEFINE_float('rmsprop_decay', 0.99, 'Decay term for rmsprop')
 tf.app.flags.DEFINE_float('rmsprop_momentum', 0.99, 'Momentum')
 tf.app.flags.DEFINE_float('opt_epsilon', 1.0, 'Epsilon term for optimizer')
-tf.app.flags.DEFINE_bool('restore', False, 'restore ckpt')
+tf.app.flags.DEFINE_bool('restore', True, 'restore ckpt')
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -177,8 +177,8 @@ def train():
                                                                                      train_loss,
                                                                                      acc_val,
                                                                                      learning_rate_val))
-                # print("label",np.transpose(label_train))
-                # print("pred",np.transpose(pred_val)[-1])
+                print("label",np.transpose(label_train))
+                print("pred",np.transpose(pred_val)[-1])
 
             if itera % 1000 == 0:
                 saver.save(sess, "ckpt/ckpt.ckpt" + str(global_step_val), global_step=1)
@@ -241,7 +241,7 @@ def inference():
         if ckpt:
             print("Model restored...")
             print(ckpt)
-            #saver.restore(sess, ckpt)
+            saver.restore(sess, ckpt)
         else:
             print(None)
             return
@@ -255,4 +255,4 @@ def inference():
             f.write(output_graph_def.SerializeToString())
 
 if __name__ == '__main__':
-    train()
+    inference()

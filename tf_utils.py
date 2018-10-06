@@ -200,7 +200,7 @@ class data_utils:
 
     def get_one_batch(self, batch_size):
 
-        pos_num = batch_size // 3
+        pos_num = random.randint(10,batch_size-10)
 
         img_1_batch = np.zeros([batch_size, 224, 224, 3], np.float32)
         img_2_batch = np.zeros([batch_size, 224, 224, 3], np.float32)
@@ -229,7 +229,7 @@ class data_utils:
                 else:
                     img_2_batch[idx[count], ...] = cv2.resize(img_3, (224, 224))
 
-                label_batch[idx[count]] = 0
+                label_batch[idx[count]] = 1
                 path_a[idx[count]] = path
                 path_b[idx[count]] = path
                 count += 1
@@ -276,7 +276,7 @@ class data_utils:
 
                     img_2_batch[idx[count], ...] = cv2.resize(img_data_2, (224, 224))
 
-                    label_batch[idx[count], ...] = 1
+                    label_batch[idx[count], ...] = 0
 
                     path_a[idx[count]] = path_1
                     path_b[idx[count]] = path_2
@@ -289,7 +289,7 @@ class data_utils:
                 random.shuffle(self.list_c)
                 self.idx_neg = 0
 
-        return img_1_batch, img_2_batch, label_batch, path_a, path_b
+        return img_1_batch / 255.0 - 0.5, img_2_batch/255.0-0.5, label_batch, path_a, path_b
 
 if __name__ == '__main__':
 
