@@ -260,10 +260,17 @@ def inference():
         w_val = sess.run(tf.get_default_graph().get_tensor_by_name('metrics/sim_w:0'))
         b_val = sess.run(tf.get_default_graph().get_tensor_by_name('metrics/sim_b:0'))
 
-        with open("w_w.txt", 'a') as f:
+        with open("w_w_1.txt", 'a') as f:
             print(len(w_val))
             for ww in w_val:
                 f.write(str(ww[0]) + "\n")
+
+            f.close()
+
+        with open("w_w_2.txt", 'a') as f:
+            print(len(w_val))
+            for ww in w_val:
+                f.write(str(ww[1]) + "\n")
 
             f.close()
 
