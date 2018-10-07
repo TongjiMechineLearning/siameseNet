@@ -181,6 +181,15 @@ class data_utils:
         self.file_list = []
         for path in folder_data:
             self.file_list = listdir(path, self.file_list)
+
+        self.label_dict = {}
+        label_id = 0
+        for p in self.file_list:
+            self.label_dict[p] = label_id
+            label_id += 1
+            print(label_id)
+
+
         self.idx_neg = 0
         self.idx_pos = 0
 
@@ -205,6 +214,8 @@ class data_utils:
         img_1_batch = np.zeros([batch_size, 224, 224, 3], np.float32)
         img_2_batch = np.zeros([batch_size, 224, 224, 3], np.float32)
         label_batch = np.zeros([batch_size], np.float32)
+        labelA_batch = np.zeros([batch_size], np.float32)
+        labelB_batch = np.zeros([batch_size], np.float32)
         path_a = [i for i in range(batch_size)]
         path_b = [i for i in range(batch_size)]
         idx = [i for i in range(0, batch_size)]
@@ -232,6 +243,8 @@ class data_utils:
                 label_batch[idx[count]] = 1
                 path_a[idx[count]] = path
                 path_b[idx[count]] = path
+                labelA_batch[idx[count]] = self.label_dict[path]
+                labelB_batch[idx[count]] = self.label_dict[path]
                 count += 1
 
             self.idx_pos += 1
@@ -280,6 +293,8 @@ class data_utils:
 
                     path_a[idx[count]] = path_1
                     path_b[idx[count]] = path_2
+                    labelA_batch[idx[count]] = self.label_dict[path_1]
+                    labelB_batch[idx[count]] = self.label_dict[path_2]
 
                     count += 1
 
@@ -289,7 +304,7 @@ class data_utils:
                 random.shuffle(self.list_c)
                 self.idx_neg = 0
 
-        return img_1_batch / 255.0 - 0.5, img_2_batch/255.0-0.5, label_batch, path_a, path_b
+        return img_1_batch / 255.0 - 0.5, img_2_batch/255.0-0.5, label_batch, path_a, path_b, labelA_batch, labelB_batch
 
 if __name__ == '__main__':
 

@@ -18,7 +18,7 @@ tf.app.flags.DEFINE_integer('gpu_id', 1, 'GPU id ')
 
 tf.app.flags.DEFINE_string('train_dir', 'train', 'Directory to write checkpoints and logs')
 
-tf.app.flags.DEFINE_string('checkpoint_path', 'ckpt', 'Initial weights path')
+tf.app.flags.DEFINE_string('checkpoint_path', 'ckpt-all', 'Initial weights path')
 
 tf.app.flags.DEFINE_string('dataset_dir', '', 'training dataset directory')
 
@@ -60,7 +60,7 @@ def train():
 
     print("Setting up summary op...")
     summaries = set()
-    fea_len = 2000
+    fea_len = 1000
 
     with tf.variable_scope('input_x1') as scope:
         x1 = tf.placeholder(tf.float32, shape=[FLAGS.batch_size, FLAGS.image_height, FLAGS.image_width, 3])
@@ -82,12 +82,17 @@ def train():
         ##左支
         out1 = siamese(x1, keep_prob, fea_len)
 
-        logist_1 = tf.nn.softmax(out1)
+        w = tf.Variable(tf.truncated_normal(shape=[out1.get_shape()[-1].value, 2000],
+                                                stddev=0.05, mean=0), name='w')
+        b = tf.Variable(tf.zeros(2000), name='b')
+        # print(sim_w, sim_b, diff)
+        predA = tf.add(tf.matmul(out1, w), b)
 
-        correct_prediction = tf.equal(tf.cast(tf.argmax(logist_1, 1), tf.float32), y)
-        accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+        correct_prediction = tf.equal(tf.cast(tf.argmax(predA, 1), tf.float32), label_a)
+        accuracyA = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-        loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.cast(y, tf.int32), logits=pred)
+        lossA = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.cast(label_a, tf.int32), logits=predA)
+        lossA = tf.reduce_mean(lossA)
 
         ##参数共享
         scope.reuse_variables()
@@ -95,17 +100,29 @@ def train():
         ##右支
         out2 = siamese(x2, keep_prob, fea_len)
 
+        predB = tf.add(tf.matmul(out2, w), b)
+
+        correct_prediction = tf.equal(tf.cast(tf.argmax(predB, 1), tf.float32), label_b)
+        accuracyB = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+        lossB = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.cast(label_b, tf.int32), logits=predB)
+        lossB = tf.reduce_mean(lossB)
+
+
     print(2222222222222222222222)
 
     regularizer = layers.l2_regularizer(0.1)
 
     with tf.variable_scope('metrics') as scope:
 
-        loss, pred, accuracy, sim_w, sim_b = siamese_loss(out1, out2, label)
+        lossS, pred, accuracy, sim_w, sim_b = siamese_loss(out1, out2, label)
 
-        summaries.add(tf.summary.scalar("loss", loss))
+        summaries.add(tf.summary.scalar("loss", lossS))
+
+        loss = lossA + lossB + lossS
 
         tf.add_to_collection('loss', loss)
+
 
         regularization_loss = tf.reduce_sum(tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES))
 
@@ -162,7 +179,7 @@ def train():
 
         for itera in range(FLAGS.max_iter):
 
-            img_1_train, img_2_train, label_train, _, _ = du.get_one_batch(FLAGS.batch_size)
+            img_1_train, img_2_train, label_train, _, _, labelA_train, labelB_train= du.get_one_batch(FLAGS.batch_size)
             #img_1_train, img_2_train, label_train = sess.run([img_1_batch, img_2_batch, label_batch])
 
             if itera % 100 == 1:
@@ -171,26 +188,30 @@ def train():
                 keep_prob_val = 0.8
 
 
-            feed_dict_train = {x1: img_1_train, x2: img_2_train, label: label_train, keep_prob: keep_prob_val}
+            feed_dict_train = {x1: img_1_train, x2: img_2_train,
+                               label: label_train,label_a:labelA_train, label_b:labelB_train,
+                               keep_prob: keep_prob_val}
 
-            _, train_loss, pred_val,acc_val, global_step_val, learning_rate_val = \
-                sess.run([train_op, loss, pred, accuracy,
+            _, lossS_val,lossA_val,lossB_val, pred_val,acc_val,accA_val,accB_val, global_step_val, learning_rate_val = \
+                sess.run([train_op, lossS,lossA,lossB, pred, accuracy,accuracyA,accuracyB,
                           global_step, learning_rate], feed_dict=feed_dict_train)
 
             #summary_writer.add_summary(summary_str, global_step_val)
 
             nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 现在
             if itera % 100 == 0:
-                print('iter {}, time {}, train loss {}, acc_val {}, learn_rate {}'.format(itera,
+                print('iter {}, time {}, lossS_val {}, lossA_val {}, lossB_val {}, acc_val {}, accA {}, accB {}, learn_rate {}'.format(itera,
                                                                                      nowTime,
-                                                                                     train_loss,
-                                                                                     acc_val,
+                                                                                     lossS_val,lossA_val,lossB_val,
+                                                                                     acc_val,accA_val,accB_val,
                                                                                      learning_rate_val))
                 print("label",np.transpose(label_train))
                 print("pred",np.transpose(pred_val)[-1])
+                print("label_a",np.transpose(labelA_train))
+                print("label_b", np.transpose(labelB_train))
 
             if itera % 1000 == 0:
-                saver.save(sess, "ckpt/ckpt.ckpt" + str(global_step_val), global_step=1)
+                saver.save(sess, "ckpt-all/ckpt.ckpt" + str(global_step_val), global_step=1)
 
         #summary_writer.close()
 
@@ -264,4 +285,4 @@ def inference():
             f.write(output_graph_def.SerializeToString())
 
 if __name__ == '__main__':
-    inference()
+    train()

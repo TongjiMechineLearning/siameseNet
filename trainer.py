@@ -246,6 +246,9 @@ def inference():
             print(None)
             return
 
+        for var in tf.global_variables():
+            print(var)
+
         output_graph_def = tf.graph_util. \
             convert_variables_to_constants(sess,
                                            sess.graph.as_graph_def(),
@@ -253,6 +256,20 @@ def inference():
 
         with tf.gfile.FastGFile('model/output_graph.pb', 'wb') as f:
             f.write(output_graph_def.SerializeToString())
+
+        w_val = sess.run(tf.get_default_graph().get_tensor_by_name('metrics/sim_w:0'))
+        b_val = sess.run(tf.get_default_graph().get_tensor_by_name('metrics/sim_b:0'))
+
+        with open("w_w.txt", 'a') as f:
+            print(len(w_val))
+            for ww in w_val:
+                f.write(str(ww[0]) + "\n")
+
+            f.close()
+
+        with open("w_b.txt", 'a') as f:
+            f.writelines(str(b_val))
+            f.close()
 
 if __name__ == '__main__':
     inference()
